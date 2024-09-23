@@ -62,11 +62,11 @@ const Diskio_drvTypeDef  SD_Driver =
   SD_initialize,
   SD_status,
   SD_read,
-#if  _USE_WRITE == 1
+#if _USE_WRITE == 1
   SD_write,
 #endif /* _USE_WRITE == 1 */
 
-#if  _USE_IOCTL == 1
+#if _USE_IOCTL == 1
   SD_ioctl,
 #endif /* _USE_IOCTL == 1 */
 };
