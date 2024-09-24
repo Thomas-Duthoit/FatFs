@@ -19,7 +19,77 @@
   ******************************************************************************
   @endverbatim
 
-### V2.1.4/18-10-2019 ###
+### V4.0.1/18-08-2023 ###
+============================
++ Add LICENSE.md file at the root directory.
+
+### V4.0.0/05-06-2023 ###
+============================
++ Update to FatFs R0.15 version
+
++ Rename ff_conf.h to ff_conf_template.h
+
++ Update the license of fatfs and drivers files
+
++ Rename ffsystem.c to ffsystem_template.c
+  - Add ffsystem_baremetal.c and ffsystem_cmsis_os.c implmentations
+
++ Remove diskio drivers templates that use BSP APIs.
+
++ Add template folder containing template files
+  - drivers/template/user_diskio.h/.c : User diskio driver
+  - drivers/template/sd_diskio_config.h : uSD diskio configuration file
+  - drivers/template/sram_diskio_config.h : sram diskio configuration file
+  - drivers/template/usbh_diskio_config.h : usb host diskio configuration file
+
++ Rework sd diskio drivers to use HAL API
+  - drivers/sd/sd_diskio.h/.c : sd driver using polling API
+  - drivers/sd/sd_diskio_dma_standalone.h/.c : sd driver using DMA API in baremetal mode
+  - drivers/sd/sd_diskio_dma_rtos.h/.c : sd driver using DMA API in RTOS mode
+  - support unaligned access by default in sd_diskio_dma_rtos.c and sd_diskio_dma_standalone.c drivers
+
++ Add internal sram diskio driver
+ - drivers/sram/sram_diskio.h/.c : sram driver
+
++ Rework usb host diskio driver to use HAL API
+ - drivers/usb_host/usbh_diskio.h/.c : usbh driver
+
++ Update inclusion model for diskio drivers
+
+### V3.0.0/20-04-2020 ###
+============================
++ update to the FatFs r0.14, that introduces compatibility break with the previous versions
+
++ apply patches to fix minor bugs in the r.014 release
+  - ff.c
+
++  remove unneeded flags "_USE_WRITE" & "_USE_IOCTL" and use correct config flags as newly defined in the FatFs 0.14 release
+  - diskio.c
+  - diskio.h
+  - ff_gen_drv.c
+  - ff_gen_drv.h
+  - ffconf_template.h
+  - drivers/ppp_diskio_template.c
+  - drivers/sd_diskio_dma_rtos_template_bspv1.c
+  - drivers/sd_diskio_dma_rtos_template_bspv2.c
+  - drivers/sd_diskio_dma_template_bspv1.c
+  - drivers/sd_diskio_dma_template_bspv2.c
+  - drivers/sd_diskio_template_bspv1.c
+  - drivers/sd_diskio_template_bspv2.c
+  - drivers/sdram_diskio_template_bspv1.c
+  - drivers/sdram_diskio_template_bspv2.c
+  - drivers/sram_diskio_template.c
+  - drivers/usbh_diskio_dma_template.c
+  - drivers/usbh_diskio_template.c
+
++ add new patterns file to provide different implmentations for the "ffsystem" API
+  - patterns/ffsystem_baremetal.c
+  - patterns/ffsystem_freertos.c
+  - patterns/ffsystem_cmsis_os.c
+
+
+
+### V2.1.4/11-10-2019 ###
 ============================
 + Fix wrong usage of the "memcpy" in the SD_Write() function
   - drivers/sd_diskio_dma_template_bspv1.c
